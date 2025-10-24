@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muda Visioner Penggerak Nasional (MVP.N)</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #000000; /* Hitam */
+            --secondary-color: #ffffff; /* Putih */
+            --accent-color: #0d6efd; /* Warna biru Bootstrap untuk highlight */
+            --light-gray: #f8f9fa; /* Warna abu-abu terang */
+            --text-color: #333333; /* Warna teks umum */
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-weight: 400;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            position: relative; 
+            padding-top: 80px;
+        }
+
+        /* --- Components Styling --- */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+            border-bottom: 1px solid #eee;
+        }
+        .navbar .navbar-brand strong {
+            color: var(--primary-color);
+        }
+        .navbar .nav-link {
+            font-weight: 500;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            color: var(--accent-color);
+        }
+        .navbar .dropdown-item {
+            color: var(--primary-color);
+        }
+        .navbar .dropdown-item:hover {
+            background-color: var(--light-gray);
+            color: var(--accent-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('pulau-bali background atas.png') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            padding: 140px 0;
+            text-align: center;
+            animation: zoom-in-out 30s infinite alternate;
+        }
+
+        @keyframes zoom-in-out {
+            0% {
+                background-size: 100% 100%;
+            }
+            100% {
+                background-size: 110% 110%;
+            }
+        }
+
+        .hero-section .logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+        .hero-section h1 {
+            font-weight: 700;
+            font-size: 3.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: var(--secondary-color);
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .section-bg {
+            background-color: var(--light-gray); /* Menggunakan light-gray */
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: none;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            background-color: var(--secondary-color); /* Pastikan card berwarna putih */
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+        .card .card-title, .card .card-text {
+            color: var(--text-color); /* Warna teks di card */
+        }
+
+        /* Khusus untuk card Visi & Misi yang berwarna hitam */
+        #vision-mission .card.bg-dark-custom {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        #vision-mission .card.bg-dark-custom .card-title,
+        #vision-mission .card.bg-dark-custom .card-body ul li {
+            color: var(--secondary-color);
+        }
+
+        /* Styling untuk Program Kerja */
+        #program-kerja .nav-tabs {
+            border-bottom: 2px solid #dee2e6;
+        }
+        #program-kerja .nav-tabs .nav-link {
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1rem 1.25rem;
+        }
+        #program-kerja .nav-tabs .nav-link.active {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+        #program-kerja .tab-content {
+            padding: 2.5rem 0.5rem;
+        }
+        #program-kerja .tab-pane h4 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        #program-kerja .tab-pane ul {
+            list-style-type: '✓ '; /* Custom bullet */
+            padding-left: 1.5rem;
+        }
+        #program-kerja .tab-pane ul li {
+            padding-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: #ccc;
+            padding: 60px 0 20px 0;
+        }
+        .footer h4 {
+            color: white;
+            font-weight: 600;
+        }
+        .footer p {
+            color: #ccc;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: var(--secondary-color);
+        }
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+        .logo-grid img {
+            max-width: 100%;
+            height: 80px;
+            object-fit: contain;
+            /* filter: grayscale(100%); <-- DIHAPUS */
+            transition: filter 0.3s ease;
+        }
+
+        /* Form Styling */
+        #collaboration-form .form-label {
+            color: var(--primary-color);
+        }
+        #collaboration-form .form-control, #collaboration-form .form-select {
+            border-color: #ccc;
+        }
+        #collaboration-form .btn-dark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        #collaboration-form .btn-dark:hover {
+            background-color: #333;
+            border-color: #333;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="MVP.N Logo" style="height: 45px; filter: brightness(0);">
+                <strong class="ms-2">MVP.N</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about" data-key="nav_about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vision-mission" data-key="nav_vision">Visi & Misi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#program-kerja" data-key="nav_program">Program Kerja</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#organization" data-key="nav_org">Struktur Komunitas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#documentation" data-key="nav_gallery">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partnership" data-key="nav_partner">Kemitraan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-key="nav_contact">Kontak</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-key="nav_lang">
+                            <i class="bi bi-translate"></i> Bahasa
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('id')">Indonesia</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('en')">English</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeLanguage('fr')">Français</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <img src="logo.png" alt="Logo MVP.N" class="logo">
+            <h1 class="display-3" data-key="hero_title">MUDA VISIONER PENGGERAK NASIONAL</h1>
+            <p class="lead mt-3" data-key="hero_subtitle">Memberdayakan pemuda, mendorong kemajuan bangsa melalui inovasi dan kepemimpinan.</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <h2 class="section-title text-start" data-key="about_title">Tentang Kami</h2>
+                        <p data-key="about_p1">Muda Visioner Penggerak Nasional adalah komunitas non-profit yang dibentuk untuk memberdayakan generasi muda agar berkontribusi pada pembangunan dan kemajuan wilayah. Program kami melibatkan pelatihan, pendidikan, dan penyediaan wadah bagi pemuda untuk mengembangkan ide-ide kreatif dan inovatif.</p>
+                        <p data-key="about_p2">Didirikan di Sukabumi pada tahun 2023, MVP.N lahir dari pemikiran putera-puteri daerah dan alumni diaspora sebagai bentuk pengabdian untuk generasi selanjutnya. Kami hadir secara independen sebagai tanggapan atas kebutuhan pemuda Indonesia untuk terlibat lebih aktif dalam proses pembangunan, menjadi agen perubahan yang mampu mengatasi tantangan sosial, ekonomi, dan lingkungan untuk masa depan bangsa.</p>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="logo.png" class="img-fluid" alt="Logo MVP.N" style="max-height: 250px; filter: brightness(0);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision-mission" class="section-bg">
+            <div class="container">
+                <h2 class="section-title" data-key="vm_title">Visi & Misi</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-4 h-100">
+                            <div class="card-body text-center">
+                                <h3 class="card-title mb-4" data-key="vm_vision_title"><i class="bi bi-eye-fill"></i><br>Visi</h3>
+                                <p data-key="vm_vision_p">Menjadi garda terdepan dalam memfasilitasi partisipasi aktif pemuda Indonesia dalam pembangunan nasional yang berkelanjutan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4 h-100 bg-dark-custom"> <div class="card-body">
+                                <h3 class="card-title text-center mb-4" data-key="vm_mission_title"><i class="bi bi-bullseye"></i><br>Misi</h3>
+                                <ul class="list-unstyled mt-3">
+                                    <li class="mb-2" data-key="vm_mission_1"><i class="bi bi-check-circle-fill me-2"></i>Mendorong pemuda untuk berinovasi dan berkontribusi dalam berbagai bidang.</li>
+                                    <li class="mb-2" data-key="vm_mission_2"><i class="bi bi-check-circle-fill me-2"></i>Menyediakan platform untuk pendidikan dan pengembangan keterampilan kepemimpinan.</li>
+                                    <li class="mb-2" data-key="vm_mission_3"><i class="bi bi-check-circle-fill me-2"></i>Menggalang kerjasama dengan berbagai organisasi, pemerintah, dan sektor swasta.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="program-kerja">
+            <div class="container">
+                <h2 class="section-title" data-key="program_title">Program Kerja</h2>
+                
+                <ul class="nav nav-tabs nav-fill mb-4" id="programKerjaTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pendidikan-tab" data-bs-toggle="tab" data-bs-target="#pendidikan-content" type="button" role="tab" aria-controls="pendidikan-content" aria-selected="true" data-key="program_edu">Pendidikan</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="kewirausahaan-tab" data-bs-toggle="tab" data-bs-target="#kewirausahaan-content" type="button" role="tab" aria-controls="kewirausahaan-content" aria-selected="false" data-key="program_ent">Kewirausahaan</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sdm-tab" data-bs-toggle="tab" data-bs-target="#sdm-content" type="button" role="tab" aria-controls="sdm-content" aria-selected="false" data-key="program_hrd">Pengembangan Sumber Daya Manusia</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="programKerjaTabContent">
+                    
+                    <div class="tab-pane fade show active" id="pendidikan-content" role="tabpanel" aria-labelledby="pendidikan-tab">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <h4>Pendidikan</h4>
+                                <ul>
+                                    <li>Kelas PKBM (Kelas Kejar Paket A, B & C)</li>
+                                    <li>Kelas Self Improvement / Public Speaking</li>
+                                    <li>Kelas Pelatihan Bahasa Asing :
+                                        <ul>
+                                            <li>Inggris</li>
+                                            <li>Jerman</li>
+                                            <li>Prancis</li>
+                                            <li>Mandarin</li>
+                                            <li>Arab</li>
+                                            <li>Turki</li>
+                                            <li>Korea</li>
+                                            <li>Thailand (coming soon)</li>
+                                            <li>Isyarat (coming soon)</li>
+                                            <li>Urdu (coming soon)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="kewirausahaan-content" role="tabpanel" aria-labelledby="kewirausahaan-tab">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <h4>Kewirausahaan</h4>
+                                <p>Pelatihan & Pembinaan :</p>
+                                <ul>
+                                    <li>UMKM Go Export</li>
+                                    <li>Business Matching dengan Buyer Dalam & Luar Negeri</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="sdm-content" role="tabpanel" aria-labelledby="sdm-tab">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <h4>Jenis Pelatihan Pengembangan SDM dalam Komunitas</h4>
+                                <ul>
+                                    <li><b>Pelatihan Keterampilan Teknis (Vocational Training)</b>
+                                        <ul>
+                                            <li>Menjahit, tata boga, tata rias, pertukangan, otomotif</li>
+                                            <li>Pertanian, peternakan, perikanan</li>
+                                            <li>Pengolahan hasil pertanian/pangan</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Pelatihan Kewirausahaan</b>
+                                        <ul>
+                                            <li>Dasar-dasar kewirausahaan</li>
+                                            <li>Manajemen usaha kecil dan menengah (UKM)</li>
+                                            <li>Pemasaran produk lokal</li>
+                                            <li>Digital marketing dan e-commerce</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Pelatihan Soft Skills</b>
+                                        <ul>
+                                            <li>Komunikasi efektif</li>
+                                            <li>Kepemimpinan komunitas</li>
+                                            <li>Manajemen konflik</li>
+                                            <li>Etika kerja dan disiplin</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Pelatihan Literasi</b>
+                                        <ul>
+                                            <li>Literasi dasar (baca, tulis, hitung)</li>
+                                            <li>Literasi digital</li>
+                                            <li>Literasi keuangan</li>
+                                            <li>Literasi hukum dan sosial</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Pelatihan Pemberdayaan Sosial</b>
+                                        <ul>
+                                            <li>Gender dan pemberdayaan perempuan</li>
+                                            <li>Pendidikan lingkungan hidup</li>
+                                            <li>Kesehatan masyarakat berbasis komunitas</li>
+                                            <li>Pencegahan kekerasan dalam rumah tangga (KDRT) dan perlindungan anak</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Pelatihan Kepemudaan dan Kepemimpinan Lokal</b>
+                                        <ul>
+                                            <li>Pengembangan kapasitas pemuda</li>
+                                            <li>Kepemimpinan berbasis komunitas</li>
+                                            <li>Organisasi dan mobilisasi sosial</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h4>Program Kerja yang Mencakup Pengembangan SDM dalam Komunitas</h4>
+                                <ul>
+                                    <li><b>Program Pemberdayaan Masyarakat Berbasis Partisipasi</b>
+                                        <ul>
+                                            <li>Pelibatan warga dalam perencanaan dan pengambilan keputusan</li>
+                                            <li>Musyawarah warga (musrenbang desa)</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program Desa/Kelurahan Mandiri</b>
+                                        <ul>
+                                            <li>Penguatan BUMDes/BUMKel</li>
+                                            <li>Pengembangan potensi lokal berbasis SDM</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program Inkubasi Usaha Kecil</b>
+                                        <ul>
+                                            <li>Pembinaan usaha rintisan komunitas</li>
+                                            <li>Pendampingan wirausaha lokal</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program Pusat Kegiatan Belajar Masyarakat (PKBM)</b>
+                                        <ul>
+                                            <li>Pendidikan non-formal dan pelatihan keterampilan</li>
+                                            <li>Paket A, B, C dan kursus keterampilan</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program Magang atau Praktek Kerja Lapangan (PKL)</b>
+                                        <ul>
+                                            <li>Bagi remaja dan pemuda di sektor produktif</li>
+                                            <li>Disambungkan dengan dunia industri atau UKM</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program CSR (Corporate Social Responsibility)</b>
+                                        <ul>
+                                            <li>Kolaborasi sektor swasta dalam pengembangan SDM lokal</li>
+                                            <li>Beasiswa, pelatihan, fasilitas pelatihan kerja</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>Program Kesehatan Berbasis Komunitas</b>
+                                        <ul>
+                                            <li>Kader posyandu, kesehatan lingkungan</li>
+                                            <li>Pelatihan gizi dan PHBS (Perilaku Hidup Bersih dan Sehat)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h4>Tujuan Akhir dari Program dan Pelatihan Ini</h4>
+                                <ul>
+                                    <li>Meningkatkan <i>kapasitas individu dan kelompok</i></li>
+                                    <li>Mendorong <i>kemandirian ekonomi komunitas</i></li>
+                                    <li>Memperkuat <i>kohesi sosial</i> dan kepemimpinan lokal</li>
+                                    <li>Mengurangi <i>tingkat pengangguran dan kemiskinan</i></li>
+                                    <li>Meningkatkan <i>akses terhadap pendidikan dan keterampilan</i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="organization" class="section-bg">
+            <div class="container">
+                <h2 class="section-title" data-key="org_title">Struktur Komunitas</h2>
+                <div class="row g-4 justify-content-center text-center">
+                    <h4 class="mt-4" data-key="org_bod_title">Board Of Director</h4>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/indra.jpeg" alt="Foto Indra A. Oktariawan"><div class="card-body"><h5 class="card-title">Indra A. Oktariawan</h5><p class="card-subtitle text-muted" data-key="org_bod">BOD</p></div></div></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/ani.jpeg" alt="Foto Ani Yuliani"><div class="card-body"><h5 class="card-title">Ani Yuliani</h5><p class="card-subtitle text-muted" data-key="org_vice_bod">Vice BOD</p></div></div></div>
+                    
+                    <h4 class="mt-4" data-key="org_sec_title">Sekretaris</h4>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/Putri Wardani.jpeg" alt="Foto Putri Wardhany"><div class="card-body"><h5 class="card-title">Putri Wardhany</h5><p class="card-subtitle text-muted" data-key="org_sec">Sekretaris</p></div></div></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/maria.jpeg" alt="Foto Maria C. Maharani"><div class="card-body"><h5 class="card-title">Maria C. Maharani</h5><p class="card-subtitle text-muted" data-key="org_vice_sec">Wakil Sekretaris</p></div></div></div>
+                    
+                    <h4 class="mt-4" data-key="org_econ_title">Direktorat Hubungan Ekonomi & Kerjasama Regional</h4>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/susan.jpeg" alt="Foto Susanty"><div class="card-body"><h5 class="card-title">Susanty</h5><p class="card-subtitle text-muted" data-key="org_econ_dir">Direktorat</p></div></div></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/Ajeng Fimara.jpeg" alt="Foto Ajeng Fimara"><div class="card-body"><h5 class="card-title">Ajeng Fimara</h5><p class="card-subtitle text-muted" data-key="org_econ_vice">Wakil Direktorat</p></div></div></div>
+                    
+                    <h4 class="mt-4" data-key="org_intl_title">Direktorat Kerjasama Hubungan Internasional</h4>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/ramdani.jpeg" alt="Foto Ramdani Murdiana"><div class="card-body"><h5 class="card-title">DR.(C). Ramdani Murdiana</h5><p class="card-subtitle text-muted" data-key="org_intl_asean">Hubungan Internasional ASEAN</p></div></div></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3"><div class="card team-card"><img src="Foto Anggots/revisi/budi.jpeg" alt="Foto Budi Suranto"><div class="card-body"><h5 class="card-title">Budi Suranto</h5><p class="card-subtitle text-muted" data-key="org_intl_mideast">Hubungan Internasional Timur Tengah</p></div></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="documentation">
+            <div class="container">
+                <h2 class="section-title" data-key="gallery_title">Galeri Kegiatan</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.20.jpeg" class="card-img-top" alt="Dokumentasi 1" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_1_title">Kegiatan 1</h5>
+                                <p class="card-text" data-key="gallery_1_cap">Penyampaian materi oleh narasumber.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.20 (1).jpeg" class="card-img-top" alt="Dokumentasi 2" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_2_title">Kegiatan 2</h5>
+                                <p class="card-text" data-key="gallery_2_cap">Peresmian acara pameran.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.21.jpeg" class="card-img-top" alt="Dokumentasi 3" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_3_title">Kegiatan 3</h5>
+                                <p class="card-text" data-key="gallery_3_cap">Suasana diskusi panel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.21 (1).jpeg" class="card-img-top" alt="Dokumentasi 4" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_4_title">Kegiatan 4</h5>
+                                <p class="card-text" data-key="gallery_4_cap">Foto bersama setelah seminar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.21 (2).jpeg" class="card-img-top" alt="Dokumentasi 5" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_5_title">Kegiatan 5</h5>
+                                <p class="card-text" data-key="gallery_5_cap">Foto bersama di akhir acara.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.21 (3).jpeg" class="card-img-top" alt="Dokumentasi 6" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_6_title">Kegiatan 6</h5>
+                                <p class="card-text" data-key="gallery_6_cap">Sesi diskusi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.22.jpeg" class="card-img-top" alt="Dokumentasi 7" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_7_title">Kegiatan 7</h5>
+                                <p class="card-text" data-key="gallery_7_cap">Sesi audiens.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.22 (1).jpeg" class="card-img-top" alt="Dokumentasi 8" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_8_title">Kegiatan 8</h5>
+                                <p class="card-text" data-key="gallery_8_cap">Foto grup di dalam ruangan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.22 (2).jpeg" class="card-img-top" alt="Dokumentasi 9" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_9_title">Kegiatan 9</h5>
+                                <p class="card-text" data-key="gallery_9_cap">Foto grup bersama.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.23.jpeg" class="card-img-top" alt="Dokumentasi 10" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_10_title">Kegiatan 10</h5>
+                                <p class="card-text" data-key="gallery_10_cap">Diskusi serius dengan audiens.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.23 (1).jpeg" class="card-img-top" alt="Dokumentasi 11" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_11_title">Kegiatan 11</h5>
+                                <p class="card-text" data-key="gallery_11_cap">Penandatanganan MOU.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.23 (2).jpeg" class="card-img-top" alt="Dokumentasi 12" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_12_title">Kegiatan 12</h5>
+                                <p class="card-text" data-key="gallery_12_cap">Pertemuan formal.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.23 (3).jpeg" class="card-img-top" alt="Dokumentasi 13" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_13_title">Kegiatan 13</h5>
+                                <p class="card-text" data-key="gallery_13_cap">Penyerahan cinderamata.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.24.jpeg" class="card-img-top" alt="Dokumentasi 14" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_14_title">Kegiatan 14</h5>
+                                <p class="card-text" data-key="gallery_14_cap">Sesi dialog.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.24 (1).jpeg" class="card-img-top" alt="Dokumentasi 15" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_15_title">Kegiatan 15</h5>
+                                <p class="card-text" data-key="gallery_15_cap">Foto grup setelah acara.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.24 (2).jpeg" class="card-img-top" alt="Dokumentasi 16" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_16_title">Kegiatan 16</h5>
+                                <p class="card-text" data-key="gallery_16_cap">Foto di acara K-EXPO.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.25.jpeg" class="card-img-top" alt="Dokumentasi 17" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_17_title">Kegiatan 17</h5>
+                                <p class="card-text" data-key="gallery_17_cap">Foto grup dengan peserta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/WhatsApp Image 2025-10-10 at 11.59.25 (1).jpeg" class="card-img-top" alt="Dokumentasi 18" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_18_title">Kegiatan 18</h5>
+                                <p class="card-text" data-key="gallery_18_cap">Foto bersama setelah seminar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/Penanda tanganan MoU/WhatsApp Image 2025-10-21 at 12.17.51.jpeg" class="card-img-top" alt="Penandatanganan MoU Pakistan" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_19_title">Penandatanganan MoU</h5>
+                                <p class="card-text" data-key="gallery_19_cap">MoU dengan Grup Pengusaha Pakistan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/IMG_9293.JPG" class="card-img-top" alt="ALB Indonesia Awards 2025" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_20_title">ALB Indonesia Awards 2025</h5>
+                                <p class="card-text" data-key="gallery_20_cap">Kehadiran di ALB Indonesia In-House Legal Summit & Law Awards 2025.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <img src="kegiatan/IMG_9351.JPG" class="card-img-top" alt="Sesi Diskusi Meja Bundar" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title" data-key="gallery_21_title">Sesi Diskusi</h5>
+                                <p class="card-text" data-key="gallery_21_cap">Diskusi meja bundar dengan para peserta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partnership" class="section-bg">
+            <div class="container">
+                <h2 class="section-title" data-key="partner_title">Kemitraan Kami</h2>
+                <div class="row text-center mb-5">
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_media">Media Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/Logo SGUYC.png" alt="Seekers">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.45 (3).jpeg" alt="Peradma.net">
+                            <img src="logo/LOGO_SPEKTRA.png" alt="Spectra">
+                            <img src="logo/LOGO FOKAL jpeg.jpg" alt="FOKAL">
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_comm">Community Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.47 (1).jpeg" alt="UKMZone">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.53.jpeg" alt="UMKM Sukabumi Go Export">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.51.jpeg" alt="Percis Kota Sukabumi">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.53 (2).jpeg" alt="DAG">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.51 (3).jpeg" alt="IPMI"> </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_gov">Government Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.44.jpeg" alt="Kementerian Perdagangan">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.52.jpeg" alt="Kementerian Umkm">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.44 (1).jpeg" alt="Kemenkopukm">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.52 (1).jpeg" alt="ICC Indonesia">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.50 (1).jpeg" alt="Dispusipda Jabar">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.43.jpeg" alt="Dispora Jabar">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.53 (1).jpeg" alt="Diskuk Jabar">
+                            <img src="logo/indag_logo.png" alt="Indag Jabar">
+
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_hosp">Hospitality & Campus Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.46 (1).jpeg" alt="BSI Sukabumi">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.47.jpeg" alt="GiiA Maluku Hotel Thamrin">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.45 (1).jpeg" alt="Anugrah Hotel Sukabumi">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.45 (2).jpeg" alt="Rumah Manis Butik Hotel">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.51 (2).jpeg" alt="RS. Kartika Kasih">
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_brand">Brand Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.49 (1).jpeg" alt="Botram">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.44 (2).jpeg" alt="ChansHerbal">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.47 (3).jpeg" alt="OMG">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.50 (2).jpeg" alt="Naavagreen">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.50.jpeg" alt="JDP">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.49.jpeg" alt="Bening's Clinic">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.48 (2).jpeg" alt="Wardah">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.52 (2).jpeg" alt="RedDoorz">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.45.jpeg" alt="ISpring">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.47 (2).jpeg" alt="Yogya Toserba">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.48 (1).jpeg" alt="JNE">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.46.jpeg" alt="EF">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.49 (3).jpeg" alt="Dapurkyu Tiwi">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.48.jpeg" alt="IM3 Post Paid">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.51 (1).jpeg" alt="Batik Kenari">
+                            <img src="logo/WhatsApp Image 2025-10-10 at 11.59.49 (2).jpeg" alt="Pikahayang">
+                            <img src="logo/Kakawna pict.png" alt="Kakawna Indonesian Chocolate"> <img src="logo/Logo SWEET KOKONA Tanpa BG.png" alt="Sweet Kokona"> <img src="logo/LOGO ALAMME HORIZONTAL.png" alt="Alamme"> </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_law">Law Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/grandall logo.jpg" alt="Grandall Law Firm">
+                            <img src="logo/DeHeng Law Offices Logo_0.jpg" alt="DeHeng Law Offices">
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h4 data-key="partner_trade">International Promotion Trade Center Partnership</h4>
+                        <div class="logo-grid">
+                            <img src="logo/pngfind.com-america-png-327200.png" alt="@america">
+                            <img src="logo/99a729107494f93ab7c92a0d745304b3.png" alt="Cambodia Kingdom of Wonder">
+                            <img src="logo/KOTRA_Logo.jpg" alt="KOTRA">
+                            <img src="logo/images (2).jpeg" alt="Vietnam Timeless Charm">
+                            <img src="logo/download-logo-pesona-indonesia-vector-4.png" alt="Wonderful Indonesia">
+                            <img src="logo/faVMTA2026_Logo_CMYK_revNov2024.jpg" alt="Visit Malaysia 2026">
+                            <img src="logo/dzt--logo--en--large.480x270-hidpi.png" alt="DZT Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="collaboration-form" class="section-bg">
+            <div class="container">
+                <h2 class="section-title" data-key="form_title">Muda Visioner Penggerak Nasional Membuka Kesempatan untuk Berkolaborasi dan Menjadi Mitra</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form action="mailto:mudavisionerpenggerak.nasional@outlook.com" method="POST" enctype="text/plain">
+                            <div class="mb-3">
+                                <label for="pic-name" class="form-label" data-key="form_name">Nama PIC</label>
+                                <input type="text" class="form-control" id="pic-name" name="Nama_PIC">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pic-contact" class="form-label" data-key="form_contact">Kontak PIC</label>
+                                <input type="text" class="form-control" id="pic-contact" name="Kontak_PIC">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pic-email" class="form-label" data-key="form_email">Email PIC</label>
+                                <input type="email" class="form-control" id="pic-email" name="Email_PIC">
+                            </div>
+                            <div class="mb-3">
+                                <label for="domicile" class="form-label" data-key="form_domicile">Wilayah Area Domisili</label>
+                                <input type="text" class="form-control" id="domicile" name="Domisili">
+                            </div>
+                            <div class="mb-3">
+                                <label for="instance-name" class="form-label" data-key="form_instance">Nama Instansi/Organisasi/Komunitas</label>
+                                <input type="text" class="form-control" id="instance-name" name="Nama_Instansi">
+                            </div>
+                            <div class="mb-3">
+                                <label for="company-profile" class="form-label" data-key="form_profile">Upload Company Profile</label>
+                                <input class="form-control" type="file" id="company-profile" name="Company_Profile">
+                                <small class="form-text text-muted">Note: File upload requires a backend server. This mailto: link will not attach the file.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="proposal" class="form-label" data-key="form_proposal">Jelaskan Secara Singkat Mengenai Yang Anda Ajukan</label>
+                                <textarea class="form-control" id="proposal" rows="4" name="Proposal_Singkat"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark" data-key="form_submit">Ajukan Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer id="contact" class="footer">
+        <div class="container text-center">
+            <img src="logo.png" alt="MVP.N Logo" style="height: 60px; filter: brightness(0) invert(1);" class="mb-4">
+            <h4 data-key="footer_title">Muda Visioner Penggerak Nasional</h4>
+            <p data-key="footer_location">Sukabumi, Jawa Barat, Indonesia</p>
+            <p>
+                <a href="mailto:mudavisionerpenggerak.nasional@outlook.com">
+                    <i class="bi bi-envelope-fill me-2"></i>
+                    mudavisionerpenggerak.nasional@outlook.com
+                </a>
+            </p>
+            <p>
+                <i class="bi bi-telephone-fill me-2"></i>
+                +62 895-0135-8149
+            </p>
+            <p>
+                <i class="bi bi-telephone-fill me-2"></i>
+                +62 8111-5427-94
+            </p>
+            <div class="footer-bottom">
+                <p class="mb-0 small" data-key="footer_copyright">&copy; 2025 MVP.N. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+        const translations = {
+            id: {
+                nav_about: "Tentang Kami",
+                nav_vision: "Visi & Misi",
+                nav_program: "Program Kerja",
+                nav_org: "Struktur Komunitas",
+                nav_gallery: "Galeri",
+                nav_partner: "Kemitraan",
+                nav_contact: "Kontak",
+                nav_lang: '<i class="bi bi-translate"></i> Bahasa',
+                hero_title: "MUDA VISIONER PENGGERAK NASIONAL",
+                hero_subtitle: "Memberdayakan pemuda, mendorong kemajuan bangsa melalui inovasi dan kepemimpinan.",
+                about_title: "Tentang Kami",
+                about_p1: "Muda Visioner Penggerak Nasional adalah komunitas non-profit yang dibentuk untuk memberdayakan generasi muda agar berkontribusi pada pembangunan dan kemajuan wilayah. Program kami melibatkan pelatihan, pendidikan, dan penyediaan wadah bagi pemuda untuk mengembangkan ide-ide kreatif dan inovatif.",
+                about_p2: "Didirikan di Sukabumi pada tahun 2023, MVP.N lahir dari pemikiran putera-puteri daerah dan alumni diaspora sebagai bentuk pengabdian untuk generasi selanjutnya. Kami hadir secara independen sebagai tanggapan atas kebutuhan pemuda Indonesia untuk terlibat lebih aktif dalam proses pembangunan, menjadi agen perubahan yang mampu mengatasi tantangan sosial, ekonomi, dan lingkungan untuk masa depan bangsa.",
+                vm_title: "Visi & Misi",
+                vm_vision_title: '<i class="bi bi-eye-fill"></i><br>Visi',
+                vm_vision_p: "Menjadi garda terdepan dalam memfasilitasi partisipasi aktif pemuda Indonesia dalam pembangunan nasional yang berkelanjutan.",
+                vm_mission_title: '<i class="bi bi-bullseye"></i><br>Misi',
+                vm_mission_1: '<i class="bi bi-check-circle-fill me-2"></i>Mendorong pemuda untuk berinovasi dan berkontribusi dalam berbagai bidang.',
+                vm_mission_2: '<i class="bi bi-check-circle-fill me-2"></i>Menyediakan platform untuk pendidikan dan pengembangan keterampilan kepemimpinan.',
+                vm_mission_3: '<i class="bi bi-check-circle-fill me-2"></i>Menggalang kerjasama dengan berbagai organisasi, pemerintah, dan sektor swasta.',
+                program_title: "Program Kerja",
+                program_edu: "Pendidikan",
+                program_ent: "Kewirausahaan",
+                program_hrd: "Pengembangan SDM",
+                org_title: "Struktur Komunitas",
+                org_bod_title: "Board Of Director",
+                org_bod: "BOD",
+                org_vice_bod: "Vice BOD",
+                org_sec_title: "Sekretaris",
+                org_sec: "Sekretaris",
+                org_vice_sec: "Wakil Sekretaris",
+                org_econ_title: "Direktorat Hubungan Ekonomi & Kerjasama Regional",
+                org_econ_dir: "Direktorat",
+                org_econ_vice: "Wakil Direktorat",
+                org_intl_title: "Direktorat Kerjasama Hubungan Internasional",
+                org_intl_asean: "Hubungan Internasional ASEAN",
+                org_intl_mideast: "Hubungan Internasional Timur Tengah",
+                gallery_title: "Galeri Kegiatan",
+                gallery_1_title: "Kegiatan 1", gallery_1_cap: "Penyampaian materi oleh narasumber.",
+                gallery_2_title: "Kegiatan 2", gallery_2_cap: "Peresmian acara pameran.",
+                gallery_3_title: "Kegiatan 3", gallery_3_cap: "Suasana diskusi panel.",
+                gallery_4_title: "Kegiatan 4", gallery_4_cap: "Foto bersama setelah seminar.",
+                gallery_5_title: "Kegiatan 5", gallery_5_cap: "Foto bersama di akhir acara.",
+                gallery_6_title: "Kegiatan 6", gallery_6_cap: "Sesi diskusi.",
+                gallery_7_title: "Kegiatan 7", gallery_7_cap: "Sesi audiens.",
+                gallery_8_title: "Kegiatan 8", gallery_8_cap: "Foto grup di dalam ruangan.",
+                gallery_9_title: "Kegiatan 9", gallery_9_cap: "Foto grup bersama.",
+                gallery_10_title: "Kegiatan 10", gallery_10_cap: "Diskusi serius dengan audiens.",
+                gallery_11_title: "Kegiatan 11", gallery_11_cap: "Penandatanganan MOU.",
+                gallery_12_title: "Kegiatan 12", gallery_12_cap: "Pertemuan formal.",
+                gallery_13_title: "Kegiatan 13", gallery_13_cap: "Penyerahan cinderamata.",
+                gallery_14_title: "Kegiatan 14", gallery_14_cap: "Sesi dialog.",
+                gallery_15_title: "Kegiatan 15", gallery_15_cap: "Foto grup setelah acara.",
+                gallery_16_title: "Kegiatan 16", gallery_16_cap: "Foto di acara K-EXPO.",
+                gallery_17_title: "Kegiatan 17", gallery_17_cap: "Foto grup dengan peserta.",
+                gallery_18_title: "Kegiatan 18", gallery_18_cap: "Foto bersama setelah seminar.",
+                gallery_19_title: "Penandatanganan MoU", gallery_19_cap: "MoU dengan Grup Pengusaha Pakistan.",
+                gallery_20_title: "ALB Indonesia Awards 2025",
+                gallery_20_cap: "Kehadiran di ALB Indonesia In-House Legal Summit & Law Awards 2025.",
+                gallery_21_title: "Sesi Diskusi",
+                gallery_21_cap: "Diskusi meja bundar dengan para peserta.",
+                partner_title: "Kemitraan Kami",
+                partner_media: "Media Partnership",
+                partner_comm: "Community Partnership",
+                partner_gov: "Government Partnership",
+                partner_hosp: "Hospitality & Campus Partnership",
+                partner_brand: "Brand Partnership",
+                partner_law: "Law Partnership",
+                partner_trade: "International Promotion Trade Center Partnership",
+                form_title: "Muda Visioner Penggerak Nasional Membuka Kesempatan untuk Berkolaborasi dan Menjadi Mitra",
+                form_name: "Nama PIC",
+                form_contact: "Kontak PIC",
+                form_email: "Email PIC",
+                form_domicile: "Wilayah Area Domisili",
+                form_instance: "Nama Instansi/Organisasi/Komunitas",
+                form_profile: "Upload Company Profile",
+                form_proposal: "Jelaskan Secara Singkat Mengenai Yang Anda Ajukan",
+                form_submit: "Ajukan Form",
+                footer_title: "Muda Visioner Penggerak Nasional",
+                footer_location: "Sukabumi, Jawa Barat, Indonesia",
+                footer_copyright: "&copy; 2025 MVP.N. Hak Cipta Dilindungi."
+            },
+            en: {
+                nav_about: "About Us",
+                nav_vision: "Vision & Mission",
+                nav_program: "Work Programs",
+                nav_org: "Community Structure",
+                nav_gallery: "Gallery",
+                nav_partner: "Partnership",
+                nav_contact: "Contact",
+                nav_lang: '<i class="bi bi-translate"></i> Language',
+                hero_title: "YOUNG VISIONARY NATIONAL MOVERS",
+                hero_subtitle: "Empowering youth, driving national progress through innovation and leadership.",
+                about_title: "About Us",
+                about_p1: "Muda Visioner Penggerak Nasional is a non-profit community formed to empower the younger generation to contribute to regional development and progress. Our programs involve training, education, and providing a platform for youth to develop creative and innovative ideas.",
+                about_p2: "Established in Sukabumi in 2023, MVP.N was born from the thoughts of local sons and daughters and diaspora alumni as a form of dedication to the next generation. We are present independently in response to the need for Indonesian youth to be more actively involved in the development process, becoming agents of change capable of overcoming social, economic, and environmental challenges for the nation's future.",
+                vm_title: "Vision & Mission",
+                vm_vision_title: '<i class="bi bi-eye-fill"></i><br>Vision',
+                vm_vision_p: "To be at the forefront of facilitating the active participation of Indonesian youth in sustainable national development.",
+                vm_mission_title: '<i class="bi bi-bullseye"></i><br>Mission',
+                vm_mission_1: '<i class="bi bi-check-circle-fill me-2"></i>Encouraging youth to innovate and contribute in various fields.',
+                vm_mission_2: '<i class="bi bi-check-circle-fill me-2"></i>Providing a platform for education and leadership skills development.',
+                vm_mission_3: '<i class="bi bi-check-circle-fill me-2"></i>Fostering cooperation with various organizations, government, and the private sector.',
+                program_title: "Work Programs",
+                program_edu: "Education",
+                program_ent: "Entrepreneurship",
+                program_hrd: "Human Resource Development",
+                org_title: "Community Structure",
+                org_bod_title: "Board Of Director",
+                org_bod: "BOD",
+                org_vice_bod: "Vice BOD",
+                org_sec_title: "Secretary",
+                org_sec: "Secretary",
+                org_vice_sec: "Vice Secretary",
+                org_econ_title: "Directorate of Economic Relations & Regional Cooperation",
+                org_econ_dir: "Directorate",
+                org_econ_vice: "Vice Directorate",
+                org_intl_title: "Directorate of International Relations Cooperation",
+                org_intl_asean: "ASEAN International Relations",
+                org_intl_mideast: "Middle East International Relations",
+                gallery_title: "Activity Gallery",
+                gallery_1_title: "Activity 1", gallery_1_cap: "Presentation of material by the speaker.",
+                gallery_2_title: "Activity 2", gallery_2_cap: "Inauguration of the exhibition event.",
+                gallery_3_title: "Activity 3", gallery_3_cap: "Atmosphere of the panel discussion.",
+                gallery_4_title: "Activity 4", gallery_4_cap: "Group photo after the seminar.",
+                gallery_5_title: "Activity 5", gallery_5_cap: "Group photo at the end of the event.",
+                gallery_6_title: "Activity 6", gallery_6_cap: "Discussion session.",
+                gallery_7_title: "Activity 7", gallery_7_cap: "Audience session.",
+                gallery_8_title: "Activity 8", gallery_8_cap: "Indoor group photo.",
+                gallery_9_title: "Activity 9", gallery_9_cap: "Group photo together.",
+                gallery_10_title: "Activity 10", gallery_10_cap: "Serious discussion with the audience.",
+                gallery_11_title: "Activity 11", gallery_11_cap: "MOU signing.",
+                gallery_12_title: "Activity 12", gallery_12_cap: "Formal meeting.",
+                gallery_13_title: "Activity 13", gallery_13_cap: "Presentation of souvenirs.",
+                gallery_14_title: "Activity 14", gallery_14_cap: "Dialogue session.",
+                gallery_15_title: "Activity 15", gallery_15_cap: "Group photo after the event.",
+                gallery_16_title: "Activity 16", gallery_16_cap: "Photo at the K-EXPO event.",
+                gallery_17_title: "Activity 17", gallery_17_cap: "Group photo with participants.",
+                gallery_18_title: "Activity 18", gallery_18_cap: "Group photo after the seminar.",
+                gallery_19_title: "MoU Signing", gallery_19_cap: "MoU with Pakistan Business Group.",
+                gallery_20_title: "ALB Indonesia Awards 2025",
+                gallery_20_cap: "Attendance at ALB Indonesia In-House Legal Summit & Law Awards 2025.",
+                gallery_21_title: "Discussion Session",
+                gallery_21_cap: "Round table discussion with participants.",
+                partner_title: "Our Partnerships",
+                partner_media: "Media Partnership",
+                partner_comm: "Community Partnership",
+                partner_gov: "Government Partnership",
+                partner_hosp: "Hospitality & Campus Partnership",
+                partner_brand: "Brand Partnership",
+                partner_law: "Law Partnership",
+                partner_trade: "International Promotion Trade Center Partnership",
+                form_title: "Muda Visioner Penggerak Nasional Opens Opportunities for Collaboration and Partnership",
+                form_name: "PIC Name",
+                form_contact: "PIC Contact",
+                form_email: "PIC Email",
+                form_domicile: "Domicile Area",
+                form_instance: "Instance/Organization/Community Name",
+                form_profile: "Upload Company Profile",
+                form_proposal: "Briefly explain your proposal",
+                form_submit: "Submit Form",
+                footer_title: "Muda Visioner Penggerak Nasional",
+                footer_location: "Sukabumi, West Java, Indonesia",
+                footer_copyright: "&copy; 2025 MVP.N. All Rights Reserved."
+            },
+            fr: { // --- Menggunakan kutip ganda ("") untuk string ---
+                nav_about: "À Propos de Nous",
+                nav_vision: "Vision & Mission",
+                nav_program: "Programmes de Travail",
+                nav_org: "Structure",
+                nav_gallery: "Galerie",
+                nav_partner: "Partenariat",
+                nav_contact: "Contact",
+                nav_lang: "<i class=\"bi bi-translate\"></i> Langue", // Perhatikan escape \" di dalam string
+                hero_title: "JEUNES VISIONNAIRES MOBILISATEURS NATIONAUX",
+                hero_subtitle: "Autonomiser la jeunesse, piloter le progrès national par l'innovation et le leadership.",
+                about_title: "À Propos de Nous",
+                about_p1: "Muda Visioner Penggerak Nasional est une communauté à but non lucratif créée pour autonomiser la jeune génération afin de contribuer au développement et au progrès régionaux. Nos programmes comprennent la formation, l'éducation et la mise à disposition d'une plateforme permettant aux jeunes de développer des idées créatives et innovantes.",
+                about_p2: "Fondée à Sukabumi en 2023, MVP.N est née des réflexions des fils et filles de la région et des anciens de la diaspora comme une forme de dévouement à la prochaine génération. Nous sommes présents de manière indépendante en réponse au besoin de la jeunesse indonésienne de s'impliquer plus activement dans le processus de développement, devenant des agents de changement capables de surmonter les défis sociaux, économiques et environnementaux pour l'avenir de la nation.",
+                vm_title: "Vision & Mission",
+                vm_vision_title: "<i class=\"bi bi-eye-fill\"></i><br>Vision",
+                vm_vision_p: "Être à l'avant-garde pour faciliter la participation active de la jeunesse indonésienne au développement national durable.",
+                vm_mission_title: "<i class=\"bi bi-bullseye\"></i><br>Mission",
+                vm_mission_1: "<i class=\"bi bi-check-circle-fill me-2\"></i>Encourager les jeunes à innover et à contribuer dans divers domaines.",
+                vm_mission_2: "<i class=\"bi bi-check-circle-fill me-2\"></i>Fournir une plateforme pour l'éducation et le développement des compétences en leadership.", // Apostrof ' tidak perlu di-escape
+                vm_mission_3: "<i class=\"bi bi-check-circle-fill me-2\"></i>Promouvoir la coopération avec diverses organisations, le gouvernement et le secteur privé.",
+                program_title: "Programmes de Travail",
+                program_edu: "Éducation",
+                program_ent: "Entrepreneuriat",
+                program_hrd: "Développement des RH",
+                org_title: "Structure de la Communauté",
+                org_bod_title: "Conseil d'Administration",
+                org_bod: "BOD",
+                org_vice_bod: "Vice-BOD",
+                org_sec_title: "Secrétaire",
+                org_sec: "Secrétaire",
+                org_vice_sec: "Vice-secrétaire",
+                org_econ_title: "Direction des Relations Économiques et de la Coopération Régionale",
+                org_econ_dir: "Direction",
+                org_econ_vice: "Vice-direction",
+                org_intl_title: "Direction de la Coopération des Relations Internationales",
+                org_intl_asean: "Relations Internationales ASEAN",
+                org_intl_mideast: "Relations Internationales Moyen-Orient",
+                gallery_title: "Galerie d'Activités",
+                gallery_1_title: "Activité 1", gallery_1_cap: "Présentation du matériel par l'intervenant.",
+                gallery_2_title: "Activité 2", gallery_2_cap: "Inauguration de l'événement d'exposition.",
+                gallery_3_title: "Activité 3", gallery_3_cap: "Ambiance de la table ronde.",
+                gallery_4_title: "Activité 4", gallery_4_cap: "Photo de groupe après le séminaire.",
+                gallery_5_title: "Activité 5", gallery_5_cap: "Photo de groupe à la fin de l'événement.",
+                gallery_6_title: "Activité 6", gallery_6_cap: "Session de discussion.",
+                gallery_7_title: "Activité 7", gallery_7_cap: "Session du public.",
+                gallery_8_title: "Activité 8", gallery_8_cap: "Photo de groupe à l'intérieur.",
+                gallery_9_title: "Activité 9", gallery_9_cap: "Photo de groupe.",
+                gallery_10_title: "Activité 10", gallery_10_cap: "Discussion sérieuse avec le public.",
+                gallery_11_title: "Activité 11", gallery_11_cap: "Signature du protocole d'accord.",
+                gallery_12_title: "Activité 12", gallery_12_cap: "Réunion formelle.",
+                gallery_13_title: "Activité 13", gallery_13_cap: "Remise de souvenirs.",
+                gallery_14_title: "Activité 14", gallery_14_cap: "Session de dialogue.",
+                gallery_15_title: "Activité 15", gallery_15_cap: "Photo de groupe après l'événement.",
+                gallery_16_title: "Activité 16", gallery_16_cap: "Photo à l'événement K-EXPO.",
+                gallery_17_title: "Activité 17", gallery_17_cap: "Photo de groupe avec les participants.",
+                gallery_18_title: "Activité 18", gallery_18_cap: "Photo de groupe après le séminaire.",
+                gallery_19_title: "Signature du MoU", gallery_19_cap: "MoU avec le groupe d'entreprises pakistanais.",
+                gallery_20_title: "ALB Indonesia Awards 2025",
+                gallery_20_cap: "Participation au Sommet Juridique Interne et aux Law Awards 2025 d'ALB Indonésie.",
+                gallery_21_title: "Session de Discussion",
+                gallery_21_cap: "Table ronde avec les participants.",
+                partner_title: "Nos Partenariats",
+                partner_media: "Partenariat Médias",
+                partner_comm: "Partenariat Communautaire",
+                partner_gov: "Partenariat Gouvernemental",
+                partner_hosp: "Partenariat Hôtellerie et Campus",
+                partner_brand: "Partenariat de Marque",
+                partner_law: "Partenariat Juridique",
+                partner_trade: "Partenariat du Centre International de Promotion du Commerce",
+                form_title: "Muda Visioner Penggerak Nasional Ouvre des Opportunités de Collaboration et de Partenariat",
+                form_name: "Nom du PIC",
+                form_contact: "Contact du PIC",
+                form_email: "Email du PIC",
+                form_domicile: "Zone de Domicile",
+                form_instance: "Nom de l'Instance/Organisation/Communauté",
+                form_profile: "Télécharger le Profil de l'Entreprise",
+                form_proposal: "Expliquez brièvement votre proposition",
+                form_submit: "Soumettre le Formulaire",
+                footer_title: "Muda Visioner Penggerak Nasional",
+                footer_location: "Sukabumi, Java Occidental, Indonésie",
+                footer_copyright: "&copy; 2025 MVP.N. Tous Droits Réservés."
+            }
+        };
+
+        function changeLanguage(lang) {
+            if (!translations[lang]) {
+                console.error("Language not found: " + lang);
+                return;
+            }
+            
+            localStorage.setItem('mvpn_lang', lang);
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('mvpn_lang') || 'id'; 
+            changeLanguage(savedLang);
+        });
+    </script>
+
+
+
+</body>
+</html>
